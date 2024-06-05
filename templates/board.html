@@ -1,0 +1,29 @@
+<!-- board template -->
+
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Boggle Game</h1>
+    </header>
+
+    <table>
+        <tbody>
+            {% for row in board %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/check-word" method="POST">
+        <label for="word">Enter your word</label>
+        <input type="text" name="word" id="word">
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}   
