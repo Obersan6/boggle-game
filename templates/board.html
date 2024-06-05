@@ -7,23 +7,42 @@
 {% block content %}
     <header>
         <h1>Boggle Game</h1>
+        <h4>Score: 0 </h4>
+        <div id="times-played">
+            <p>Times played: </p>
+        </div>
+        <div id="highest-score">
+            <p>Highest score: </p>
+        </div>
     </header>
 
-    <table>
-        <tbody>
-            {% for row in board %}
-            <tr>
-                {% for cell in row %}
-                <td>{{cell}}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div id="timer">Time left: 60 seconds</div>
 
-    <form action="/check-word" method="POST">
+    <form id="guess-form">
         <label for="word">Enter your word</label>
-        <input type="text" name="word" id="word">
-        <button type="submit">Submit</button>
+        <input type="text" name="word" id="word" required>
+        <button type="submit">Submit your word</button>
     </form>
+
+    <div id="table-container">
+        <table>
+            <tbody>
+                {% for row in board %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{cell}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="result">
+        <ul></ul>
+    </div>
+
 {% endblock %}   
+
+
+

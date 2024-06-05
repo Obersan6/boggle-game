@@ -1,3 +1,69 @@
 body {
-    background-color: peachpuff;
+    background-color: rgb(190, 201, 226);
 }
+
+/* Header */
+h1 {
+    text-align: center;
+    -webkit-text-stroke: 2px #DCDCF4; /* width and color */ 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #04063f;
+    font-size: 4rem;
+}
+
+header h4 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #04063f;
+    font-size: 1.5rem;
+}
+
+header #times-played, header #highest-score {
+    margin-left: 15%;  
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #04063f;
+    font-weight: bold;    
+}
+
+#table-container {
+    margin: 0 auto; /* This will center the container horizontally */ 
+    width: 15%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    -webkit-text-stroke: 2px #DCDCF4;
+    color:  #04063f;
+    font-size: 3rem;
+}
+
+#table-container td{
+    border: solid #04063f 1px;
+    border: solid whitesmoke 2px;
+    border-radius: 15%;
+    text-align: center;
+    width: 100px;
+}
+
+#guess-form {
+    margin-bottom: 2.5%;
+}
+
+#guess-form{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #04063f;
+    font-weight: bold;    
+}
+
+#timer {
+    margin-left: 15%; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #04063f;
+    font-weight: bold;  
+}
+
+button { 
+    border: #DCDCF4 solid 2.5px;
+    border-radius: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color: #DCDCF4;
+    background-color:  #04063f;
+}
+
+    

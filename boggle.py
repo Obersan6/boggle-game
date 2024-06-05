@@ -9,6 +9,7 @@ class Boggle():
     def __init__(self):
 
         self.words = self.read_dict("words.txt")
+        print(f"Dictionary loaded with {len(self.words)} words.")
 
     def read_dict(self, dict_path):
         """Read and return all words in dictionary."""
@@ -32,8 +33,11 @@ class Boggle():
     def check_valid_word(self, board, word):
         """Check if a word is a valid word in the dictionary and/or the boggle board"""
 
-        word_exists = word in self.words
+        word_exists = word.lower() in self.words
         valid_word = self.find(board, word.upper())
+
+        print(f"Checking word: {word}")
+        print(f"Word exists: {word_exists}, Valid on board: {valid_word}")
 
         if word_exists and valid_word:
             result = "ok"

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 from boggle import Boggle
 
 app = Flask(__name__)
@@ -6,17 +6,7 @@ app.config["SECRET_KEY"] = 'FALKFAskfmakfjakfa2282282$##'
 
 boggle_game = Boggle()
 
-
-"""
-DISPLAYING THE BOARD
-
-1- The first thing you need to do is display the board in a Jinja template.
-    - You will be generating a board on the backend using a function from the "boggle.py" file and sending that to your Jinja template.
-    - Using Jinja, display the board on the page.
-2- Since you will also be using this board in other routes, make sure to place it in the session.
-3-  Once you have displayed the board --> add a form that allows a user to submit a guess.
-"""
-
+#Store the current game score and the number of times played on the server side.
 @app.route('/')
 def homepage():
     """Display board and add form for user to submit a guess."""
@@ -26,14 +16,66 @@ def homepage():
 
     return render_template('board.html', board=board)
 
-@app.route('/check-word')
-def check_word(self, methods=['POST']):
-    word = request.form['word']
-    board = session['board']
+# Initialize the game: number of plays and highest score to 0
+@app.before_request # Executes code before every request
+def initialize_game():
+    # Set conditions for both numb of plays and highest score and save them in session
+    if 'numb_plays' not in session:
+        session['numb_plays'] = 0
+    if 'highest_score' not in session:
+        session['highest_score'] = 0
 
-    return render_template('board.html', board=board)
+# Update number of plays and highscore
+@app.route('/update-stats', methods=['POST'])
+def update_stats():
+    # Retrieve data from form and initial score
+    data = request.form
+    score = int(data.get('score', 0))
+
+    print(f"Received score: {score}")
+    print(f"Session before update: {session}")
+
+    # Increment numb of plays in session
+    session['numb_plays'] += 1
+
+    # Set condition in case score is higher than highest score in session
+    if score > session['highest_score']:
+        session['highest_score'] = score
     
-    # finish the function
-    # I need to render the board.html template where this form is and get the results.
-    # Use the class method "check_valid_word"
+    print(f"Session after update: {session}")
+    
+    # Return json dict for number of plays and highscore in session
+    return jsonify({
+        'numb_plays': session['numb_plays'], 
+        'highest_score': session['highest_score']
+        })
 
+@app.route('/check-word', methods=['POST'])
+def get_word():
+    word = request.json['word']
+    board = session.get('board', [])
+    submitted_words = session.get('submitted_words', [])
+    
+    print(f"Received word: {word}")
+    print(f"Board: {board}")
+    print(f"Already submitted words: {submitted_words}")
+
+    if word in submitted_words:
+        response = {"result": "already-submitted"}
+    else:
+        result = boggle_game.check_valid_word(board, word)
+        if result == "ok":
+            submitted_words.append(word)
+            session['submitted_words'] = submitted_words
+            response = {"result": "ok"}
+        elif result == "not-on-board":
+            response = {"result": "not-on-board"}
+        else:
+            response = {"result": "not-a-word"}
+    
+    return jsonify(response)
+
+
+
+
+ 
