@@ -25,15 +25,26 @@ async function getGuessWord(evt) {
         const response = await axios.post('/check-word', { word: word });
         const result = response.data.result;
         
+        // Remove any previously added classes
+        $('ul').removeClass('correct-word not-on-board-word not-a-word word-already-sub');
+
         if (result === "ok") {
+            $('ul li:first').remove();
+            $('ul').addClass('correct-word');
             $('ul').append(`<li>The word "${word}" is correct!</li>`);
             score += word.length;
             $('h4').text(`SCORE: ${score}`);
         } else if (result === "not-on-board") {
+            $('ul li:first').remove();
+            $('ul').addClass('not-on-board-word');
             $('ul').append(`<li>"${word}" is not on the board!</li>`);
         } else if (result === "not-a-word") {
+            $('ul li:first').remove();
+            $('ul').addClass('not-a-word');
             $('ul').append(`<li>"${word}" is not a word!</li>`);
         } else if (result === "already-submitted") {
+            $('ul li:first').remove();
+            $('ul').addClass('word-already-sub');
             $('ul').append(`<li>"${word}" has already been submitted!</li>`);
         } else {
             console.error('Unexpected result:', result);

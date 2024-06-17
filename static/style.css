@@ -23,6 +23,33 @@ header #times-played, header #highest-score {
     font-weight: bold;    
 }
 
+li {
+    list-style: none;
+}
+.correct-word {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #0d8c1e;
+    font-weight: bold;   
+}
+
+.not-on-board-word {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #b9b007;
+    font-weight: bold;   
+}
+
+.not-a-word {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #ef1636;
+    font-weight: bold;   
+}
+
+.word-already-sub {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    color:  #cd26b1;
+    font-weight: bold;   
+}
+
 #table-container {
     margin: 0 auto; /* This will center the container horizontally */ 
     width: 15%;
