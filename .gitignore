@@ -1,5 +1,5 @@
 venv
-g__pycache__
+__pycache__
 enunciado.pdf
 static/prueba.js
 draft.py
