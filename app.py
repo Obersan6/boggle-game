@@ -7,6 +7,7 @@ app.config["SECRET_KEY"] = 'FALKFAskfmakfjakfa2282282$##'
 boggle_game = Boggle()
 
 #Store the current game score and the number of times played on the server side.
+# Homepage route
 @app.route('/')
 def homepage():
     """Display board and add form for user to submit a guess."""
