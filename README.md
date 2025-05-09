@@ -3,8 +3,7 @@
 
 A browser-based word game where users form words from a randomized letter grid. The app checks word validity, tracks scores, and provides live feedback — all powered by Flask and JavaScript.
 
-🎮 [Watch the video walkthrough](https://youtu.be/uB6AyBCDPBA)  
-💻 [View the code on GitHub](https://github.com/Obersan6/boggle-game)
+🎮 [Watch video demo](https://youtu.be/uB6AyBCDPBA)  
 
 ---
 
